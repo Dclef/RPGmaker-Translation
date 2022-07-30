@@ -1,8 +1,8 @@
 # RPGMakerMV/MZ游戏系列汉化教程
 
-### 创作初衷：
+## 创作初衷
 
-末法时代，如今的游戏只有自己去汉化和校对润色，汉化组以死，所以自食其力。
+末法时代，如今的游戏只有自己去汉化和校对润色，汉化组已死，所以自食其力。
 
 以及对3DM中的RPGMakerMV/MZ游戏解包、解密工具包的补充。因为该工具包禁止转载所以就不发链接了，只需要在3DM mod官网输入rpg就可以看到。
 
@@ -12,7 +12,7 @@
 
 首先你得准备以下工具
 
-Translator++
+Translator++ [下载地址](https://pan.baidu.com/s/1VDu1LBDqYAFXfBIpn-kCDQ?pwd=pay2) 解压码：Dreamsavior
 
 一款rpgMakerMV/MZ做的游戏
 
@@ -94,6 +94,24 @@ Translator++
 
 润色对于校对来说就非常简单了，你只需要把看着很奇怪的翻译文本翻译成人话就行，就比如save，机翻可能会叫拯救，这时候你就改翻译成保存。你可以使用deepl进行比较，有些俚语使用deepl可以翻译出来，而不是机翻的直译。当然这不可能跟人相比，只是相比于机翻而言能看一点。
 
+### 1.4 解包
+
+如果你没使用t++，想自己解包的话，请使用Java-RPG-Maker-MV-Decrypter
+
+此前提条件是必须有JAVA的环境，关于如何配置JAVA的环境变量这里不必多说，百度上非常多教程。
+
+下载地址：https://github.com/Petschko/Java-RPG-Maker-MV-Decrypter
+
+###### 如果下载较慢可以关注微信公众号【老猫的杂货店】输入[rpg解包工具]获取
+
+#### 1.4.1 点击start.bat，会显示一个GUI画面，选择File->select RPG MV/MZ project
+
+![](https://cdn.jsdelivr.net/gh/dclef/CDN/rpg/rpg-59.png)
+
+#### 1.4.2 如果key存在system.json的话，会如图显示，点击Decrypt->All Files就可以进行解密，然后输出路径在output中，但其中会有一些文件解不出来，这里需要你自己去斟酌
+
+![](https://cdn.jsdelivr.net/gh/dclef/CDN/rpg/rpg-60.png)
+
 ## 2.使用RMMVCookTool对rpg进行JS加密
 
 前提说明：我并不提倡一个汉化者对一款不是自己的游戏进行加密，假如你对这款游戏写了JS脚本但不想让别人知道，那么这款加密方式适合你。
@@ -111,11 +129,11 @@ https://github.com/FirehawkV21/RMMVCookTool
 
 ##### 你也可在公众号【老猫的杂货店】输入[rpg加密工具]获取下载链接
 
-#### 2.1 首先把nw.js sdk导入ROMMVCookTool中，如图
+### 2.1 首先把nw.js sdk导入ROMMVCookTool中，如图
 
 ![](https://cdn.jsdelivr.net/gh/dclef/CDN/rpg/rpg-15-1.png)
 
-#### 2.2 打开www中的index.html文件 更换成如图所示的代码
+### 2.2 打开www中的index.html文件 更换成如图所示的代码
 
 ``![](https://cdn.jsdelivr.net/gh/dclef/CDN/rpg/rpg-16.png)
 
@@ -125,10 +143,10 @@ https://github.com/FirehawkV21/RMMVCookTool
 
 ```html
 <script>nw.Window.get().evalNWBin(null, "www/js/libs/pixi.bin");</script>
-<script>nw.Window.get().evalNWBin(null, 
-"www/js/libs/pixi-tilemap.bin");</script>
-<script>nw.Window.get().evalNWBin(null, 
-"www/js/libs/pixi-picture.bin");</script>
+<script>nw.Window.get().evalNWBin(null,
+        "www/js/libs/pixi-tilemap.bin");</script>
+<script>nw.Window.get().evalNWBin(null,
+        "www/js/libs/pixi-picture.bin");</script>
 <script>nw.Window.get().evalNWBin(null, "www/js/libs/fpsmeter.bin");</script>
 <script>nw.Window.get().evalNWBin(null, "www/js/libs/lz-string.bin");</script>
 <script>nw.Window.get().evalNWBin(null, "www/js/libs/iphone-inlinevideo.browser.bin");</script>
@@ -142,13 +160,13 @@ https://github.com/FirehawkV21/RMMVCookTool
 <script>nw.Window.get().evalNWBin(null, "www/js/main.bin");</script>
 ```
 
-#### 2.3 在js中的rpg_managers.js找到行数2805附近，这里显示的是2810.将js改为bin，如图。
+### 2.3 在js中的rpg_managers.js找到行数2805附近，这里显示的是2810.将js改为bin，如图。
 
 ![](https://cdn.jsdelivr.net/gh/dclef/CDN/rpg/rpg-18.png)
 
 ![](https://cdn.jsdelivr.net/gh/dclef/CDN/rpg/rpg-19.png)
 
-#### 2.4 再转到行数2826附近，这里是2830，更换如图所示代码
+### 2.4 再转到行数2826附近，这里是2830，更换如图所示代码
 
 ![](https://cdn.jsdelivr.net/gh/dclef/CDN/rpg/rpg-20.png)
 
@@ -158,27 +176,27 @@ https://github.com/FirehawkV21/RMMVCookTool
 
 ```js
 PluginManager.loadScript = function(name) {
- nw.Window.get().evalNWBin(null, "www/js/plugins/" + name);
+    nw.Window.get().evalNWBin(null, "www/js/plugins/" + name);
 };
 ```
 
-#### 2.5 当然如果工程被rpgmaker加密过你还可以进行进一步加密(可跳过忽略)，找到data中system.json的密钥，如图
+### 2.5 当然如果工程被rpgmaker加密过你还可以进行进一步加密(可跳过忽略)，找到data中system.json的密钥，如图
 
 ![](https://cdn.jsdelivr.net/gh/dclef/CDN/rpg/rpg-22.png)
 
-#### 2.6 删除并复制system.json中的密钥，打开rpg_core.js，找到行数9256，找到如图所示代码并将密钥粘贴上去进行代码更换，如图
+### 2.6 删除并复制system.json中的密钥，打开rpg_core.js，找到行数9256，找到如图所示代码并将密钥粘贴上去进行代码更换，如图
 
 ![](https://cdn.jsdelivr.net/gh/dclef/CDN/rpg/rpg-23.png)
 
 ![](https://cdn.jsdelivr.net/gh/dclef/CDN/rpg/rpg-24.png)
 
-#### 2.7 再转到行数147附近，找到如图所示代码，并进行代码修改，如图
+### 2.7 再转到行数147附近，找到如图所示代码，并进行代码修改，如图
 
 ![](https://cdn.jsdelivr.net/gh/dclef/CDN/rpg/rpg-25.png)
 
 ![](https://cdn.jsdelivr.net/gh/dclef/CDN/rpg/rpg-26.png)
 
-#### 2.8 然后导入游戏根目录，点击compile，勾选porject setting中的remove js，如图，你会看到多了一些bin文件，这便完成了加密(建议先把js文件备份)
+### 2.8 然后导入游戏根目录，点击compile，勾选porject setting中的remove js，如图，你会看到多了一些bin文件，这便完成了加密(建议先把js文件备份)
 
 ![](https://cdn.jsdelivr.net/gh/dclef/CDN/rpg/rpg-27.png)
 
@@ -186,29 +204,29 @@ PluginManager.loadScript = function(name) {
 
 ![](https://cdn.jsdelivr.net/gh/dclef/CDN/rpg/rpg-28-1.png)
 
-#### 2.9 然后将www中的package.json复制到nw.js根目录中并将路径修改成www，如图
+### 2.9 然后将www中的package.json复制到nw.js根目录中并将路径修改成www，如图
 
 ![](https://cdn.jsdelivr.net/gh/dclef/CDN/rpg/rpg-31.png)
 
 ![](https://cdn.jsdelivr.net/gh/dclef/CDN/rpg/rpg-31-2.png)
 
-#### 2.10 复制www到nw.js，如果能打开说明加密成功。
+### 2.10 复制www到nw.js，如果能打开说明加密成功。
 
 ![](https://cdn.jsdelivr.net/gh/dclef/CDN/rpg/rpg-30.png)
 
 ![](https://cdn.jsdelivr.net/gh/dclef/CDN/rpg/rpg-32.png)
 
-##### 这里如果觉得加密比较麻烦可以关注微信公众号【老猫的杂货店】输入【rpg加密文件】即可获取2.1-2.5步骤修改的rpg_core.js和rpg_manager.js文件
+##### 这里如果觉得加密比较麻烦可以关注微信公众号【老猫的杂货店】输入【rpg加密文件】即可获取2.1-2.5步骤修改的index.html和rpg_manager.js文件
 
-### 3.部署打包
+## 3.部署打包
 
-#### 3.1 使用Enigma Virtual Box封包
+### 3.1 使用Enigma Virtual Box封包
 
 实际上用原有的rpgmaker MV部署就已经算打包了，但里面文件可能较多，其次作为汉化者里面的json文件容易被人修改导致被倒卖，所以做一个简单的封包是有必要的，当然如果有钱的话可以使用The Enigma Protector打包，更不容易破解
 
 下载地址：https://www.enigmaprotector.cn/cn/downloads.html
 
-##### 如果下载慢的话可以关注微信公众号【老猫的杂货店】输入【rpg封包】获取
+##### 如果下载慢的话可以关注微信公众号【老猫的杂货店】输入【rpg封包工具】获取
 
 #### 3.1.1 打开文件，选择language，选择chinese，程序会要求你重启，重启以后就会显示中文
 
@@ -224,7 +242,7 @@ PluginManager.loadScript = function(name) {
 
 ![](https://cdn.jsdelivr.net/gh/dclef/CDN/rpg/rpg-37.png)
 
-#### 3.2 打包安卓
+### 3.2 打包安卓
 
 如果使用android studio的话，版本建议不要最新版，新版比较奇怪容易出现BUG，建议选择其他版本，这里我用的2020.3.1。
 
@@ -264,11 +282,11 @@ PluginManager.loadScript = function(name) {
 
 请自行替换以下关键词：
 
-myalias     别名
+myalias 别名
 
-newkeystore   密钥库文件的名称
+newkeystore 密钥库文件的名称
 
-yourpassword   密钥库密码
+yourpassword 密钥库密码
 
 ```
 keytool -genkey -keyalg RSA -alias myalias -keystore newkeystore.keystore -storepass yourpassword -validity 36000 -keysize 2048
@@ -278,7 +296,7 @@ keytool -genkey -keyalg RSA -alias myalias -keystore newkeystore.keystore -store
 
 ###### 如果想要汉化版可以关注微信公众号【老猫的杂货店】输入[rpg打包工具]获取
 
-#### 3.3 使用android studio打包APK
+### 3.3 使用android studio打包APK
 
 注意：如果你是首次打包可能会出错，因为下载gradle文件需要挂魔法
 
@@ -344,35 +362,35 @@ APK工程下载地址：https://github.com/AltimitSystems/mv-android-client
 
 至此，安卓打包教程完成。
 
-### 4.FAQ
+## 4.FAQ
 
 因为rpg的游戏种类繁多且在国内有很多资料，以及游戏会有千奇百怪的BUG，所以作者只能靠自己的经验来做问题回答，且作者并没有义务回答您的问题，遇到问题请先自己解决
 
-#### 4.1 关于游戏安卓打包后会有音频缺失的情况，该如何解决？
+### 4.1 关于游戏安卓打包后会有音频缺失的情况，该如何解决？
 
 因为在项目js文件里的rpg_manager.js代码，它将手机音频改成了m4a格式，而原先的游戏的音频并没有m4a格式，所以我们打包时会报错，出现无法找到m4a文件的错误，这里有有种比较简单的方法。直接添加一个只允许ogg的插件即可
 
-#### 4.2 游戏中会有些在手机中操作不了的手段，所以要添加虚拟摇杆，该怎么做？
+### 4.2 游戏中会有些在手机中操作不了的手段，所以要添加虚拟摇杆，该怎么做？
 
 使用QJ-button插件即可解决，请在rpgmaker mv中的工具-插件管理中选择QJ-button，然后根据自己的需求自定义按钮，这里要注意的是rpgmaker的键盘似乎跟我们有所差别，这里可以在rpg_core.js看到，如图
 
 ![](https://cdn.jsdelivr.net/gh/dclef/CDN/rpg/rpg-58.png)
 
-#### 4.3 为什么签名打包APK的时候会有四个选项，按道理说不应该是两个吗？
+### 4.3 为什么签名打包APK的时候会有四个选项，按道理说不应该是两个吗？
 
 因为此项目是做了个webview和crosswalk两种选择，crosswalk是谷歌内核，就跟腾讯的x5内核一样，用于提升性能的，你也可以选择此选项，但会多出几十MB的内存
 
-#### 4.4 请在github上提交issues，问题会根据issues中的问题或者其他平台反馈的问题持续更新.........
+### 4.4 请在github上提交issues，问题会根据issues中的问题或者其他平台反馈的问题持续更新.........
 
 ###### 插件关注微信公众号【老猫的杂货店】输入[rpg插件]获取
 
-### 5.参与本github项目
+## 5.参与本github项目
 
 这里本人沿用上一篇文章的图片，本质是一样的操作
 
 如果你只想单纯的提出问题请提交即可，如果你本身有代码基础或者无基础想参与到本项目中并修改机翻的话，请看以下步骤。
 
-#### 5.1 git 的安装与使用
+### 5.1 git 的安装与使用
 
 下载[git](https://git-scm.com/downloads)，下载完成以后安装到本地(网上搜一下安装教程，这里就不多解释)。
 
@@ -385,7 +403,7 @@ $ git config --global user.name "username"
 $ git config --global user.email "email@example.com"
 ```
 
-#### 5.2 vscode中git的使用
+### 5.2 vscode中git的使用
 
 安装vscode，默认你已经注册了github账号，请fork我的项目，为了便于理解，这里新创建了一个账号，如图所示
 
@@ -429,7 +447,7 @@ clone完成以后，修改你想要汉化文本或添加你要翻译的文本文
 
 打开并返回到vscode即可成功更新
 
-#### 5.3 在你的项目主页中提交request
+### 5.3 在你的项目主页中提交request
 
 如果你完成了很多代码修改，请提交一个request，请求合并，如图所示
 
@@ -441,12 +459,11 @@ clone完成以后，修改你想要汉化文本或添加你要翻译的文本文
 
 **注意：标题以及内容请说明清楚，否则不会合并请求。**
 
-### 6.尾声
+## 6.尾声
 
 rpgmaker MV/MZ游戏汉化教程(其实重点是MV教程)到这里完结了，常见问题后续会在github上更新，感谢你看到最后！就如我上篇renpy汉化教程一样，也希望你们参与本项目，将翻译文件作为协同翻译，这样人人为汉化游戏出一份力！
 
 同时欢迎关注微信公众号【老猫的杂货店】
 
 如果该项目对你有帮助，可以请我喝杯咖啡。
-
 ![](https://cdn.jsdelivr.net/gh/dclef/CDN/renpy/Snipaste_2022-05-01_22-32-56.png)
